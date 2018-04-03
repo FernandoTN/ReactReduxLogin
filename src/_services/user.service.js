@@ -17,14 +17,7 @@ function login(username, password) {
         body: JSON.stringify({ username, password })
     };
 
-    return fetch('/users/authenticate', requestOptions)
-        .then(response => {
-            if (!response.ok) { 
-                return Promise.reject(response.statusText);
-            }
-
-            return response.json();
-        })
+    return fetch('/users/authenticate', requestOptions).then(handleResponse)
         .then(user => {
             // login successful if there's a jwt token in the response
             if (user && user.token) {
@@ -90,7 +83,7 @@ function _delete(id) {
 }
 
 function handleResponse(response) {
-    if (!response.ok) { 
+    if (!response.ok) {
         return Promise.reject(response.statusText);
     }
 
