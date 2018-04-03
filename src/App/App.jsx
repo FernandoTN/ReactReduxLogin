@@ -50,5 +50,13 @@ function mapStateToProps(state) {
     };
 }
 
+// const mapDispatchToProps = (dispatch: sendMessageDispatch) => ({
+//   sendMessage: (message: Message) => {
+//     messageActions.sendMessage(message)(dispatch);
+//   }
+// });
+//
+// export const MessageInput = connect(() => ({}), mapDispatchToProps)(MessageInputComponent);
+
 const connectedApp = connect(mapStateToProps)(App);
 export { connectedApp as App };
